@@ -8,9 +8,9 @@ import java.util.logging.Level
 import java.util.logging.LogManager
 
 fun main() {
-    LogManager.getLogManager().getLogger("").setLevel(Level.SEVERE)
+    LogManager.getLogManager().getLogger("").level = Level.SEVERE
     // Instruccions per a llegir de la pàgina de Bicicas i col·locar en arrel
-    val bicicas = URL("http://gestiona.bicicas.es/apps/apps.php");
+    val bicicas = URL("http://gestiona.bicicas.es/apps/apps.php")
     val arrel = (JSONTokener(bicicas.openConnection().getInputStream()).nextValue() as JSONArray).get(0) as JSONObject
     val estacions = arrel.getJSONArray("ocupacion")
     val con = MongoClient("localhost", 27017)
