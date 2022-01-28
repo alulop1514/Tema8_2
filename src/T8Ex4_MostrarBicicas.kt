@@ -15,4 +15,5 @@ fun main() {
     for (estacio in estacions)
         println("${estacio.get("id")}.- ${estacio.get("punto")} (${estacio.get("ocupados")}/${estacio.get("puestos")})")
 
+    con.close()
 }

@@ -25,7 +25,6 @@ fun main() {
         doc.put("puestos", "${estacion.get("puestos")}")
         bd.getCollection("bicicas").insertOne(doc)
     }
-
-
+    println("Estaciones guardadas")
     con.close()
 }
