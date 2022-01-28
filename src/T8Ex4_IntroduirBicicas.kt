@@ -19,10 +19,10 @@ fun main() {
     for (i in 0 until estacions.length()) {
         val estacion = estacions.get(i) as JSONObject
         val doc = Document()
-        doc.put("id", "${estacion.get("id")}")
-        doc.put("punto", "${estacion.get("punto")}")
-        doc.put("ocupados", "${estacion.get("ocupados")}")
-        doc.put("puestos", "${estacion.get("puestos")}")
+        doc["id"] = "${estacion.get("id")}"
+        doc["punto"] = "${estacion.get("punto")}"
+        doc["ocupados"] = "${estacion.get("ocupados")}"
+        doc["puestos"] = "${estacion.get("puestos")}"
         bd.getCollection("bicicas").insertOne(doc)
     }
     println("Estaciones guardadas")

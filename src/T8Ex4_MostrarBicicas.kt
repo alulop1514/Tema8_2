@@ -10,10 +10,10 @@ fun main() {
     val bd = con.getDatabase("test")
 
     val ordenar = Document()
-    ordenar.put("id", 1)
+    ordenar["id"] = 1
     val estacions = bd.getCollection("bicicas").find().sort(ordenar)
     for (estacio in estacions)
-        println("${estacio.get("id")}.- ${estacio.get("punto")} (${estacio.get("ocupados")}/${estacio.get("puestos")})")
+        println("${estacio["id"]}.- ${estacio["punto"]} (${estacio["ocupados"]}/${estacio["puestos"]})")
 
     con.close()
 }
