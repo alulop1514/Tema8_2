@@ -13,9 +13,11 @@ fun main() {
     val bicicas = URL("http://gestiona.bicicas.es/apps/apps.php")
     val arrel = (JSONTokener(bicicas.openConnection().getInputStream()).nextValue() as JSONArray).get(0) as JSONObject
     val estacions = arrel.getJSONArray("ocupacion")
+    // Conexio a la base de dades
     val con = MongoClient("localhost", 27017)
     val bd = con.getDatabase("test")
 
+    // Guardem cada estacio com un document a la base de dades
     for (i in 0 until estacions.length()) {
         val estacion = estacions.get(i) as JSONObject
         val doc = Document()
@@ -26,5 +28,6 @@ fun main() {
         bd.getCollection("bicicas").insertOne(doc)
     }
     println("Estaciones guardadas")
+    // Tanquem la conexio
     con.close()
 }
